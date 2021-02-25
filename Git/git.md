@@ -31,5 +31,8 @@ git branch -a 		# 获取所有分支信息
 git config --list 	# 获取本地git的配置信息（用户名、邮箱等）
 git remote -v 	# 查看远程repo的地址
 git remote rm origin # 删除远程库
+
+# 分支迁移
+https://bbs.huaweicloud.com/blogs/228865
 ```
 
