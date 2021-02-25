@@ -19,6 +19,16 @@ git init
 git add .
 # 提交到本地代码库
 git commit -m "注释"
+# 添加远程源repo（远程新建仓库并与本地仓库关联）
+git remote add origin https://github.com/Kevin-MRZ/cpp_learning.git # 添加远程源repo
 # 提交到远程代码库
 git push origin master
+
+# 其他
+git checkout -b dev		# 创建新分支dev并切换至dev分支
+git checkout master 	# 切换回master分支
+git branch -a 		# 获取所有分支信息
+git config --list 	# 获取本地git的配置信息（用户名、邮箱等）
+git remote -v 	# 查看远程repo的地址
 ```
+
