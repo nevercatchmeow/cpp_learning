@@ -17,6 +17,7 @@
         "sstream": "cpp",
         "type_traits": "cpp",
         "cstdio": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "random": "cpp"
     }
 }
