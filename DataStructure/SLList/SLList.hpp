@@ -67,6 +67,7 @@ template <class T>
 inline LinkedList<T>::~LinkedList()
 {
 	clear();
+	delete _head;
 }
 
 template <class T>
