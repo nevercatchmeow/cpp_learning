@@ -33,7 +33,7 @@ class LinkedList
 	using PNODE = Node<T> *;
 
 public:
-	LinkedList() : _head(new Node<T>()), _length(0) {}
+	LinkedList() : _head(new Node<T>()), _tail(new Node<T>()), _length(0) {}
 	~LinkedList();
 
 	void insert_after(int index, const T &data);
