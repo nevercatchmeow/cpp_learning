@@ -10,7 +10,7 @@
  */
 #ifndef DOUBLY_LINKED_LIST_HPP
 #define DOUBLY_LINKED_LIST_HPP
-
+ 
 #include <iostream>
 
 template <class T>

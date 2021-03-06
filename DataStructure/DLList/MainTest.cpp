@@ -4,26 +4,26 @@
  * @brief Test for doubly linked list
  * @version 0.1
  * @date 2021-03-07
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
-//  Compile: g++ -o MainTest MainTest.cpp DLList.hpp -w -std=c++14
+//  Compile: g++ -o MainTest MainTest.cpp DLList.hpp -w -std=c++11
 #include <iostream>
 
 #include "DLList.hpp"
 
 void test()
 {
-	LinkedList<int> *sllist = new LinkedList<int>();
+	DLList<int> *dllist = new DLList<int>();
 
 	// Test: print()
-	sllist->print();
+	dllist->print();
 
 	// Test: isEmpty()
-	std::cout << "SLList[" << sllist->size() << "]: Is empty ? ";
-	if (sllist->isEmpty())
+	std::cout << "DLList[" << dllist->size() << "]: Is empty ? ";
+	if (dllist->isEmpty())
 		std::cout << "Yes!" << std::endl;
 	else
 		std::cout << "No!" << std::endl;
@@ -32,74 +32,74 @@ void test()
 	int i = 5;
 	while (i > 0)
 	{
-		sllist->insert_after(0, i--);
-		sllist->print();
+		dllist->insert_after(0, i--);
+		dllist->print();
 	}
 	// Test: push_front()
-	sllist->push_front(0);
-	sllist->print();
+	dllist->push_front(0);
+	dllist->print();
 	// Test: push_back()
-	sllist->push_back(6);
-	sllist->print();
+	dllist->push_back(6);
+	dllist->print();
 
 	// Test: delete_from()
-	sllist->delete_from(6);
-	sllist->print();
+	dllist->delete_from(6);
+	dllist->print();
 	// Test: pop_front()
-	sllist->pop_front();
-	sllist->print();
+	dllist->pop_front();
+	dllist->print();
 	// Test: pop_back()
-	sllist->pop_back();
-	sllist->print();
+	dllist->pop_back();
+	dllist->print();
 
 	// Test: delete_elem()
-	sllist->push_back(3);
-	sllist->print();
-	sllist->delete_elem(3);
-	sllist->print();
+	dllist->push_back(3);
+	dllist->print();
+	dllist->delete_elem(3);
+	dllist->print();
 
 	// Test: set_elem()
-	sllist->set_elem(2, 3);
-	sllist->print();
+	dllist->set_elem(2, 3);
+	dllist->print();
 
 	// Test: get_from()
-	std::cout << "SLList[" << sllist->size() << "]: The element with index 1 is ? ";
-	std::cout << sllist->get_from(1) << std::endl;
+	std::cout << "DLList[" << dllist->size() << "]: The element with index 1 is ? ";
+	std::cout << dllist->get_from(1) << std::endl;
 	// Test: get_front()
-	std::cout << "SLList[" << sllist->size() << "]: The first element / with index 0 is ? ";
-	std::cout << sllist->get_front() << std::endl;
+	std::cout << "DLList[" << dllist->size() << "]: The first element / with index 0 is ? ";
+	std::cout << dllist->get_front() << std::endl;
 	// Test: get_back()
-	std::cout << "SLList[" << sllist->size() << "]: The last element / with index " << sllist->size() - 1 << " is ? ";
-	std::cout << sllist->get_back() << std::endl;
+	std::cout << "DLList[" << dllist->size() << "]: The last element / with index " << dllist->size() - 1 << " is ? ";
+	std::cout << dllist->get_back() << std::endl;
 
 	// Test: isEmpty()
-	std::cout << "SLList[" << sllist->size() << "]: Is empty ? ";
-	if (sllist->isEmpty())
+	std::cout << "DLList[" << dllist->size() << "]: Is empty ? ";
+	if (dllist->isEmpty())
 		std::cout << "Yes!" << std::endl;
 	else
 		std::cout << "No!" << std::endl;
 
 	// Test: isContains()
-	std::cout << "SLList[" << sllist->size() << "]: Is Contains 2 ? ";
-	if (sllist->isContains(2))
+	std::cout << "DLList[" << dllist->size() << "]: Is Contains 2 ? ";
+	if (dllist->isContains(2))
 		std::cout << "Yes!" << std::endl;
 	else
 		std::cout << "No!" << std::endl;
 
-	std::cout << "SLList[" << sllist->size() << "]: Is Contains 10 ? ";
-	if (sllist->isContains(10))
+	std::cout << "DLList[" << dllist->size() << "]: Is Contains 10 ? ";
+	if (dllist->isContains(10))
 		std::cout << "Yes!" << std::endl;
 	else
 		std::cout << "No!" << std::endl;
 
 	// Test: reverse()
-	sllist->print();
-	sllist->reverse();
-	sllist->print();
+	dllist->print();
+	dllist->reverse();
+	dllist->print();
 
 	// Test: clear()
-	sllist->clear();
-	sllist->print();
+	dllist->clear();
+	dllist->print();
 }
 
 int main()
