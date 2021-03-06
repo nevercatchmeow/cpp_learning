@@ -9,7 +9,7 @@
  *
  */
 
- //  Compile: g++ -o MainTest MainTest.cpp SLList.hpp -w -std=c++14
+ //  Compile: g++ -o MainTest MainTest.cpp SLList.hpp -w -std=c++11
 #include <iostream>
 
 #include "SLList.hpp"

@@ -4,9 +4,9 @@
  * @brief Doubly linked list
  * @version 0.1
  * @date 2021-03-07
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 #ifndef DOUBLY_LINKED_LIST_HPP
 #define DOUBLY_LINKED_LIST_HPP
@@ -27,14 +27,14 @@ public:
 };
 
 template <class T>
-class LinkedList
+class DLList
 {
 	using NODE = Node<T>;
 	using PNODE = Node<T> *;
 
 public:
-	LinkedList() : _head(new Node<T>()), _tail(new Node<T>()), _length(0) {}
-	~LinkedList();
+	DLList();
+	~DLList();
 
 	void insert_after(int index, const T &data);
 	void push_front(const T &data);
@@ -66,13 +66,25 @@ private:
 };
 
 template <class T>
-inline LinkedList<T>::~LinkedList()
+inline DLList<T>::DLList() : _head(new Node<T>()),
+							 _tail(new Node<T>()), _length(0)
 {
-	clear();
+	_head->_next = _tail;
+	_head->_prev = nullptr;
+	_tail->_next = nullptr;
+	_tail->_prev = _head;
 }
 
 template <class T>
-inline void LinkedList<T>::insert_after(int index, const T &data)
+inline DLList<T>::~DLList()
+{
+	clear();
+	delete _head;
+	delete _tail;
+}
+
+template <class T>
+inline void DLList<T>::insert_after(int index, const T &data)
 {
 	if (index < 0 || index > _length)
 	{
@@ -82,24 +94,27 @@ inline void LinkedList<T>::insert_after(int index, const T &data)
 	PNODE pCurrent = _head;
 	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next)
 		;
-	pCurrent->_next = new NODE(data, pCurrent->_next);
+
+	PNODE pNewNode = new NODE(data, pCurrent->_next, pCurrent);
+	pCurrent->_next = pNewNode;
+
 	_length++;
 }
 
 template <class T>
-inline void LinkedList<T>::push_front(const T &data)
+inline void DLList<T>::push_front(const T &data)
 {
 	insert_after(0, data);
 }
 
 template <class T>
-inline void LinkedList<T>::push_back(const T &data)
+inline void DLList<T>::push_back(const T &data)
 {
 	insert_after(_length, data);
 }
 
 template <class T>
-inline T LinkedList<T>::delete_from(int index)
+inline T DLList<T>::delete_from(int index)
 {
 	if (index < 0 || index > _length - 1)
 	{
@@ -113,6 +128,7 @@ inline T LinkedList<T>::delete_from(int index)
 	PNODE pNext = pCurrent->_next;
 	T data = pNext->_data;
 	pCurrent->_next = pNext->_next;
+	pNext->_next->_prev = pCurrent;
 	delete pNext;
 	_length--;
 
@@ -120,19 +136,19 @@ inline T LinkedList<T>::delete_from(int index)
 }
 
 template <class T>
-inline T LinkedList<T>::pop_front()
+inline T DLList<T>::pop_front()
 {
 	return delete_from(0);
 }
 
 template <class T>
-inline T LinkedList<T>::pop_back()
+inline T DLList<T>::pop_back()
 {
 	return delete_from(_length - 1);
 }
 
 template <class T>
-inline void LinkedList<T>::delete_elem(const T &data)
+inline void DLList<T>::delete_elem(const T &data)
 {
 	if (!_head || !_head->_next)
 	{
@@ -146,6 +162,7 @@ inline void LinkedList<T>::delete_elem(const T &data)
 		if (pNext->_data == data)
 		{
 			pCurrent->_next = pNext->_next;
+			pNext->_next->_prev = pCurrent;
 			delete pNext;
 			pNext = pCurrent->_next;
 			_length--;
@@ -159,7 +176,7 @@ inline void LinkedList<T>::delete_elem(const T &data)
 }
 
 template <class T>
-inline T LinkedList<T>::get_from(int index)
+inline T DLList<T>::get_from(int index)
 {
 	if (index < 0 || index > _length - 1)
 	{
@@ -174,19 +191,19 @@ inline T LinkedList<T>::get_from(int index)
 }
 
 template <class T>
-inline T LinkedList<T>::get_front()
+inline T DLList<T>::get_front()
 {
-	return get_from(0);
+	return _head->_next->_data;
 }
 
 template <class T>
-inline T LinkedList<T>::get_back()
+inline T DLList<T>::get_back()
 {
-	return get_from(_length - 1);
+	return _tail->_prev->_data;
 }
 
 template <class T>
-inline void LinkedList<T>::set_elem(int index, const T &data)
+inline void DLList<T>::set_elem(int index, const T &data)
 {
 	if (index < 0 || index > _length - 1)
 	{
@@ -200,19 +217,19 @@ inline void LinkedList<T>::set_elem(int index, const T &data)
 }
 
 template <class T>
-inline int LinkedList<T>::size()
+inline int DLList<T>::size()
 {
 	return _length;
 }
 
 template <class T>
-inline bool LinkedList<T>::isEmpty()
+inline bool DLList<T>::isEmpty()
 {
 	return _length == 0;
 }
 
 template <class T>
-inline bool LinkedList<T>::isContains(const T &data)
+inline bool DLList<T>::isContains(const T &data)
 {
 	PNODE pCurrent = _head->_next;
 	while (pCurrent)
@@ -227,45 +244,48 @@ inline bool LinkedList<T>::isContains(const T &data)
 }
 
 template <class T>
-inline void LinkedList<T>::clear()
+inline void DLList<T>::clear()
 {
-	while (_head->_next)
+	while (_head->_next != _tail)
 	{
 		pop_front();
 	}
 }
 
 template <class T>
-inline void LinkedList<T>::print()
+inline void DLList<T>::print()
 {
-	std::cout << "SLList[" << size() << "]: head → ";
+	std::cout << "DLList[" << size() << "]: head → ";
 	PNODE pCurrent = _head->_next;
-	while (pCurrent)
+	while (pCurrent != _tail)
 	{
 		std::cout << pCurrent->_data << " → ";
 		pCurrent = pCurrent->_next;
 	}
-	std::cout << "null" << std::endl;
+	std::cout << "tail" << std::endl;
 }
 
 template <class T>
-inline void LinkedList<T>::reverse()
+inline void DLList<T>::reverse()
 {
 	if (!_head || !_head->_next)
 	{
 		return;
 	}
-	PNODE pCurrent = _head->_next;
-	PNODE pNext = _head->_next;
-	_head->_next = nullptr;
 
-	while (pCurrent)
+	_tail = _head;
+	PNODE pTempHead = _head;
+	PNODE pPrev = nullptr;
+	PNODE pNewNode = nullptr;
+
+	while (pTempHead)
 	{
-		pNext = pCurrent->_next;
-		pCurrent->_next = _head->_next;
-		_head->_next = pCurrent;
-		pCurrent = pNext;
+		pNewNode = pTempHead->_next;
+		pTempHead->_next = pPrev;
+		pPrev = pTempHead;
+		pTempHead = pNewNode;
 	}
+	_head = pPrev;
 }
 
 #endif // DOUBLY_LINKED_LIST_HPP
