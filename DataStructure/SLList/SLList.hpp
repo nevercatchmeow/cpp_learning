@@ -4,9 +4,9 @@
  * @brief Singly linked list
  * @version 0.1
  * @date 2021-03-07
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 #ifndef SINGLY_LINKED_LIST_HPP
 #define SINGLY_LINKED_LIST_HPP
@@ -14,30 +14,27 @@
 #include <iostream>
 
 template <class T>
-class Node
-{
+class Node {
 public:
-	Node(T data = NULL, Node *next = nullptr) : _data(data), _next(next) {}
+	Node(T data = NULL, Node* next = nullptr) : _data(data), _next(next) {}
 	~Node() { _next = nullptr; }
-
 public:
 	T _data;
-	Node<T> *_next;
+	Node<T>* _next;
 };
 
-template <class T>
-class LinkedList
+template<class T>
+class SLList
 {
 	using NODE = Node<T>;
-	using PNODE = Node<T> *;
-
+	using PNODE = Node<T>*;
 public:
-	LinkedList() : _head(new Node<T>()), _length(0) {}
-	~LinkedList();
+	SLList() :_head(new Node<T>()), _length(0) {}
+	~SLList();
 
-	void insert_after(int index, const T &data);
-	void push_front(const T &data);
-	void push_back(const T &data);
+	void insert_after(int index, const T& data);
+	void push_front(const T& data);
+	void push_back(const T& data);
 
 	T delete_from(int index);
 	T pop_front();
@@ -47,31 +44,31 @@ public:
 	T get_front();
 	T get_back();
 
-	void delete_elem(const T &data);
-	void set_elem(int index, const T &data);
+	void delete_elem(const T& data);
+	void set_elem(int index, const T& data);
 
 	int size();
 	bool isEmpty();
-	bool isContains(const T &data);
+	bool isContains(const T& data);
 
 	void clear();
 	void print();
 	void reverse();
 
+
 private:
-	Node<T> *_head;
+	Node<T>* _head;
 	int _length;
 };
 
-template <class T>
-inline LinkedList<T>::~LinkedList()
+template<class T>
+inline SLList<T>::~SLList()
 {
 	clear();
-	delete _head;
 }
 
-template <class T>
-inline void LinkedList<T>::insert_after(int index, const T &data)
+template<class T>
+inline void SLList<T>::insert_after(int index, const T& data)
 {
 	if (index < 0 || index > _length)
 	{
@@ -79,26 +76,25 @@ inline void LinkedList<T>::insert_after(int index, const T &data)
 		return;
 	}
 	PNODE pCurrent = _head;
-	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next)
-		;
+	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next);
 	pCurrent->_next = new NODE(data, pCurrent->_next);
 	_length++;
 }
 
-template <class T>
-inline void LinkedList<T>::push_front(const T &data)
+template<class T>
+inline void SLList<T>::push_front(const T& data)
 {
 	insert_after(0, data);
 }
 
-template <class T>
-inline void LinkedList<T>::push_back(const T &data)
+template<class T>
+inline void SLList<T>::push_back(const T& data)
 {
 	insert_after(_length, data);
 }
 
-template <class T>
-inline T LinkedList<T>::delete_from(int index)
+template<class T>
+inline T SLList<T>::delete_from(int index)
 {
 	if (index < 0 || index > _length - 1)
 	{
@@ -107,8 +103,7 @@ inline T LinkedList<T>::delete_from(int index)
 	}
 
 	PNODE pCurrent = _head;
-	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next)
-		;
+	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next);
 	PNODE pNext = pCurrent->_next;
 	T data = pNext->_data;
 	pCurrent->_next = pNext->_next;
@@ -118,25 +113,22 @@ inline T LinkedList<T>::delete_from(int index)
 	return data;
 }
 
-template <class T>
-inline T LinkedList<T>::pop_front()
+template<class T>
+inline T SLList<T>::pop_front()
 {
 	return delete_from(0);
 }
 
-template <class T>
-inline T LinkedList<T>::pop_back()
+template<class T>
+inline T SLList<T>::pop_back()
 {
 	return delete_from(_length - 1);
 }
 
-template <class T>
-inline void LinkedList<T>::delete_elem(const T &data)
+template<class T>
+inline void SLList<T>::delete_elem(const T& data)
 {
-	if (!_head || !_head->_next)
-	{
-		return;
-	}
+	if (!_head || !_head->_next) { return; }
 
 	PNODE pCurrent = _head;
 	PNODE pNext = _head->_next;
@@ -157,8 +149,8 @@ inline void LinkedList<T>::delete_elem(const T &data)
 	}
 }
 
-template <class T>
-inline T LinkedList<T>::get_from(int index)
+template<class T>
+inline T SLList<T>::get_from(int index)
 {
 	if (index < 0 || index > _length - 1)
 	{
@@ -167,25 +159,24 @@ inline T LinkedList<T>::get_from(int index)
 	}
 
 	PNODE pCurrent = _head->_next;
-	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next)
-		;
+	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next);
 	return pCurrent->_data;
 }
 
-template <class T>
-inline T LinkedList<T>::get_front()
+template<class T>
+inline T SLList<T>::get_front()
 {
 	return get_from(0);
 }
 
-template <class T>
-inline T LinkedList<T>::get_back()
+template<class T>
+inline T SLList<T>::get_back()
 {
 	return get_from(_length - 1);
 }
 
-template <class T>
-inline void LinkedList<T>::set_elem(int index, const T &data)
+template<class T>
+inline void SLList<T>::set_elem(int index, const T& data)
 {
 	if (index < 0 || index > _length - 1)
 	{
@@ -193,25 +184,24 @@ inline void LinkedList<T>::set_elem(int index, const T &data)
 		return;
 	}
 	PNODE pCurrent = _head->_next;
-	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next)
-		;
+	for (int i = 0; i < index; i++, pCurrent = pCurrent->_next);
 	pCurrent->_data = data;
 }
 
-template <class T>
-inline int LinkedList<T>::size()
+template<class T>
+inline int SLList<T>::size()
 {
 	return _length;
 }
 
-template <class T>
-inline bool LinkedList<T>::isEmpty()
+template<class T>
+inline bool SLList<T>::isEmpty()
 {
 	return _length == 0;
 }
 
-template <class T>
-inline bool LinkedList<T>::isContains(const T &data)
+template<class T>
+inline bool SLList<T>::isContains(const T& data)
 {
 	PNODE pCurrent = _head->_next;
 	while (pCurrent)
@@ -225,8 +215,8 @@ inline bool LinkedList<T>::isContains(const T &data)
 	return false;
 }
 
-template <class T>
-inline void LinkedList<T>::clear()
+template<class T>
+inline void SLList<T>::clear()
 {
 	while (_head->_next)
 	{
@@ -234,8 +224,8 @@ inline void LinkedList<T>::clear()
 	}
 }
 
-template <class T>
-inline void LinkedList<T>::print()
+template<class T>
+inline void SLList<T>::print()
 {
 	std::cout << "SLList[" << size() << "]: head → ";
 	PNODE pCurrent = _head->_next;
@@ -247,13 +237,10 @@ inline void LinkedList<T>::print()
 	std::cout << "null" << std::endl;
 }
 
-template <class T>
-inline void LinkedList<T>::reverse()
+template<class T>
+inline void SLList<T>::reverse()
 {
-	if (!_head || !_head->_next)
-	{
-		return;
-	}
+	if (!_head || !_head->_next) { return; }
 	PNODE pCurrent = _head->_next;
 	PNODE pNext = _head->_next;
 	_head->_next = nullptr;

@@ -4,19 +4,19 @@
  * @brief Test for singly linked list
  * @version 0.1
  * @date 2021-03-07
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
-//  Compile: g++ -o MainTest MainTest.cpp SLList.hpp -w -std=c++14
+ //  Compile: g++ -o MainTest MainTest.cpp SLList.hpp -w -std=c++14
 #include <iostream>
 
 #include "SLList.hpp"
 
 void test()
 {
-	LinkedList<int> *sllist = new LinkedList<int>();
+	SLList<int>* sllist = new SLList<int>();
 
 	// Test: print()
 	sllist->print();
