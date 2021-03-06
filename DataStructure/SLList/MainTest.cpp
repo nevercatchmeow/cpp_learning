@@ -16,7 +16,7 @@
 
 void test()
 {
-	LinkedList<int>* sllist = new LinkedList<int>();
+	LinkedList<int> *sllist = new LinkedList<int>();
 
 	// Test: print()
 	sllist->print();
