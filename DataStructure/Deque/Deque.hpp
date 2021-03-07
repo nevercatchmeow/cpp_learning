@@ -42,10 +42,10 @@ private:
 template<class T>
 inline void Deque<T>::print()
 {
-	std::cout << "Deque[" << _pDLList->size() << "]: back → ";
+	std::cout << "Deque[" << _pDLList->size() << "]: back ↔ ";
 	for (int i = 0; i < _pDLList->size(); i++)
 	{
-		std::cout << _pDLList->get_from(i) << " → ";
+		std::cout << _pDLList->get_from(i) << " ↔ ";
 	}
 	std::cout << "front" << std::endl;
 }
