@@ -255,11 +255,11 @@ inline void DLList<T>::clear()
 template <class T>
 inline void DLList<T>::print()
 {
-	std::cout << "DLList[" << size() << "]: head → ";
+	std::cout << "DLList[" << size() << "]: head ↔ ";
 	PNODE pCurrent = _head->_next;
 	while (pCurrent != _tail)
 	{
-		std::cout << pCurrent->_data << " → ";
+		std::cout << pCurrent->_data << " ↔ ";
 		pCurrent = pCurrent->_next;
 	}
 	std::cout << "tail" << std::endl;
