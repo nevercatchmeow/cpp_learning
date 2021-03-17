@@ -3,6 +3,10 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QColorDialog>
+#include <QFileDialog>
+#include <QFontDialog>
+
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -45,8 +49,20 @@ MainWindow::MainWindow(QWidget *parent)
 //            qDebug() << "Save";
 //        }
         // 警告提示对话框
-        QMessageBox::warning(this, "Warning", "warning..");
+//        QMessageBox::warning(this, "Warning", "warning..");
 
+        // 颜色选择对话框
+//        QColor color = QColorDialog::getColor(Qt::red);
+//        qDebug() << color.red() << color.green() << color.blue();
+
+        // 文件选择对话框
+//        QString filename = QFileDialog::getOpenFileName(this, "Open file", "C:\\Users\\shinrin\\Documents", "(*.jpg)");
+//        qDebug() << filename;
+
+        // 字体选择对话框
+        bool flag;
+        QFont font = QFontDialog::getFont(&flag, QFont("楷体", 36));
+        qDebug() << "字体" << font.family() << "字号" << font.pointSize() << "是否加粗" << font.bold() << "是否倾斜" << font.italic();
     });
 
 
