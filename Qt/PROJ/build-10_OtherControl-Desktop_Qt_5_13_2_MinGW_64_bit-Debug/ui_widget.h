@@ -59,7 +59,8 @@ public:
     QPushButton *btn_TabWidget;
     QComboBox *comboBox;
     QPushButton *btn_ChooseE;
-    QLabel *label;
+    QLabel *label_img;
+    QLabel *label_movie;
 
     void setupUi(QWidget *Widget)
     {
@@ -195,9 +196,16 @@ public:
         btn_ChooseE = new QPushButton(Widget);
         btn_ChooseE->setObjectName(QString::fromUtf8("btn_ChooseE"));
         btn_ChooseE->setGeometry(QRect(550, 100, 75, 23));
-        label = new QLabel(Widget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(280, 310, 361, 191));
+        label_img = new QLabel(Widget);
+        label_img->setObjectName(QString::fromUtf8("label_img"));
+        label_img->setGeometry(QRect(30, 310, 361, 191));
+        label_img->setAutoFillBackground(true);
+        label_img->setFrameShape(QFrame::Box);
+        label_movie = new QLabel(Widget);
+        label_movie->setObjectName(QString::fromUtf8("label_movie"));
+        label_movie->setGeometry(QRect(420, 310, 251, 191));
+        label_movie->setAutoFillBackground(true);
+        label_movie->setFrameShape(QFrame::Box);
 
         retranslateUi(Widget);
 
@@ -235,7 +243,8 @@ public:
         btn_ToolBox->setText(QCoreApplication::translate("Widget", "Tool Box", nullptr));
         btn_TabWidget->setText(QCoreApplication::translate("Widget", "Tab Widget", nullptr));
         btn_ChooseE->setText(QCoreApplication::translate("Widget", " \351\200\211\346\213\251E", nullptr));
-        label->setText(QString());
+        label_img->setText(QString());
+        label_movie->setText(QString());
     } // retranslateUi
 
 };

@@ -290,14 +290,39 @@
     <string> 选择E</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_img">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>30</x>
      <y>310</y>
      <width>361</width>
      <height>191</height>
     </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_movie">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>310</y>
+     <width>251</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
    </property>
    <property name="text">
     <string/>

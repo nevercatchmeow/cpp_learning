@@ -35,12 +35,12 @@ Widget::Widget(QWidget *parent)
         ui->comboBox->setCurrentText("E");
     });
 
-    // QLable 显示图片
-//    ui->label->setPixmap(QPixmap(":/image/Sunny.jpg"));
-
-    ui->label->setStyleSheet(QString::fromUtf8("image:url(:/image/Sunny.jpg);"));
-
-
+    // QLabel 显示图片
+    ui->label_img->setPixmap(QPixmap(":/Image/Frame.jpg"));
+    // QLabel 显示动画
+    QMovie *movie = new QMovie(":/Image/mario.gif");
+    ui->label_movie->setMovie(movie);
+    movie->start();
 }
 
 Widget::~Widget()

@@ -57,3 +57,16 @@ connect(ui->btn_ChooseE, &QPushButton::clicked, [=](){
 });
 ```
 
+
+
+## QLabel
+
+```c++
+// QLabel 显示图片
+ui->label_img->setPixmap(QPixmap(":/Image/Frame.jpg"));
+// QLabel 显示动画
+QMovie *movie = new QMovie(":/Image/mario.gif");
+ui->label_movie->setMovie(movie);
+movie->start();
+```
+
