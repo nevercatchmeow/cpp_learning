@@ -5,6 +5,7 @@
 #include <QtDebug>
 #include <QPainter>
 #include <QTimer>
+#include <QSound>
 
 MainScene::MainScene(QWidget *parent)
     : QMainWindow(parent)
@@ -21,6 +22,9 @@ MainScene::MainScene(QWidget *parent)
         this->close();
     });
 
+    // 开始音效准备
+    QSound *startSound = new QSound(":/res/TapButtonSound.wav");
+    // startSound->setLoops(5); // -1代表无限循环
     // 创建选择关卡的场景
     chooseScene = new ChooseLevelScene();
     // 开始按钮
@@ -31,10 +35,13 @@ MainScene::MainScene(QWidget *parent)
     // 监听选择关卡场景中的返回按钮发出的自定义信号
     connect(chooseScene, &ChooseLevelScene::chooseSceneBack, [=](){
         chooseScene->hide();
+        this->setGeometry(chooseScene->geometry());
         this->show();
     });
 
     connect(startBtn, &QPushButton::clicked, [=](){
+        // 播放音效
+        startSound->play();
         startBtn->zoomDown();
         startBtn->zoomUp();
         qDebug() << "Satrt按钮按下...";
@@ -42,6 +49,7 @@ MainScene::MainScene(QWidget *parent)
         QTimer::singleShot(200, this, [=](){
             // 隐藏主界面
             this->hide();
+            chooseScene->setGeometry(this->geometry());
             // 显示关卡选择界面
             chooseScene->show();
         });

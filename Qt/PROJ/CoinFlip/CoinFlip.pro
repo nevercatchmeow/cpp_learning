@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,14 +17,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     chooselevelscene.cpp \
+    dataconfig.cpp \
     main.cpp \
     mainscene.cpp \
+    mycoin.cpp \
     mypushbutton.cpp \
     playscene.cpp
 
 HEADERS += \
     chooselevelscene.h \
+    dataconfig.h \
     mainscene.h \
+    mycoin.h \
     mypushbutton.h \
     playscene.h
 
