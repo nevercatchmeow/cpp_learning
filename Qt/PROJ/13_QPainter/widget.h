@@ -19,5 +19,9 @@ public:
 
 private:
     Ui::Widget *ui;
+
+    // x坐标
+    int posX;
+    int posY;
 };
 #endif // WIDGET_H

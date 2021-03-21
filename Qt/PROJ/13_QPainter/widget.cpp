@@ -8,6 +8,14 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    // 点击移动按钮，移动图片
+    posX = 0;
+    posY = 0;
+    connect(ui->pushButton, &QPushButton::clicked, [=](){
+        posX += 20;
+        // 手动调用绘图事件
+        update();
+    });
 }
 
 Widget::~Widget()
@@ -17,6 +25,17 @@ Widget::~Widget()
 
 void Widget::paintEvent(QPaintEvent* e)
 {
+    QPainter painter(this);
+    // 画资源图片
+    // 如果超出屏幕，强制位置变为0
+    if(posX > this->width())
+    {
+        posX = 0;
+    }
+    painter.drawPixmap(posX, posY, QPixmap(":/Image/Luffy.png"));
+
+
+#if 0
     /*
      【高级部分】
     */
@@ -36,6 +55,7 @@ void Widget::paintEvent(QPaintEvent* e)
     // 取出画笔状态
     painter.restore();
     painter.drawRect(QRect(20,20,50,50));
+#endif
 
 #if 0
     /*
