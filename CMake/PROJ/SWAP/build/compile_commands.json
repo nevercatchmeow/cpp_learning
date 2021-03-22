@@ -1,0 +1,12 @@
+[
+{
+  "directory": "E:/Github/cmake_learning/SWAP/build",
+  "command": "E:\\App\\MinGW\\bin\\g++.exe  @CMakeFiles/main_cmake.dir/includes_CXX.rsp -g -o CMakeFiles\\main_cmake.dir\\main.cpp.obj -c E:\\Github\\cmake_learning\\SWAP\\main.cpp",
+  "file": "E:/Github/cmake_learning/SWAP/main.cpp"
+},
+{
+  "directory": "E:/Github/cmake_learning/SWAP/build",
+  "command": "E:\\App\\MinGW\\bin\\g++.exe  @CMakeFiles/main_cmake.dir/includes_CXX.rsp -g -o CMakeFiles\\main_cmake.dir\\src\\swap.cpp.obj -c E:\\Github\\cmake_learning\\SWAP\\src\\swap.cpp",
+  "file": "E:/Github/cmake_learning/SWAP/src/swap.cpp"
+}
+]

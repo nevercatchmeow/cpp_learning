@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\Workspace\Git\cpp_learning\CMake\PROJ\SWAP\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Workspace\Git\cpp_learning\CMake\PROJ\SWAP\src\swap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Workspace\Git\cpp_learning\CMake\PROJ\SWAP\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{898C0C55-83C6-3F51-AE70-640F6E572D46}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

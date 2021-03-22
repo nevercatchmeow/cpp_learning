@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "g++-7 - 生成和调试活动文件",
+            "type": "cppdbg",
+            "request": "launch",
+            // 修改此项（可执行文件路径）
+            "program": "${workspaceFolder}/build/main_cmake.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "externalTerminal",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            // 修改此项
+            "preLaunchTask": "Build project",
+            // "miDebuggerPath": "/usr/bin/gdb"
+            "miDebuggerPath": "E:\\App\\MinGW\\bin\\gdb.exe"
+        }
+    ]
+}

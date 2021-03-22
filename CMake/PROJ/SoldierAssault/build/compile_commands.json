@@ -1,0 +1,17 @@
+[
+{
+  "directory": "E:/Github/cmake_learning/SoldierAssault/build",
+  "command": "E:\\App\\MinGW\\bin\\g++.exe  @CMakeFiles/main_cmake.dir/includes_CXX.rsp  -Wall -g -std=c++14 -g -o CMakeFiles\\main_cmake.dir\\main.cpp.obj -c E:\\Github\\cmake_learning\\SoldierAssault\\main.cpp",
+  "file": "E:/Github/cmake_learning/SoldierAssault/main.cpp"
+},
+{
+  "directory": "E:/Github/cmake_learning/SoldierAssault/build",
+  "command": "E:\\App\\MinGW\\bin\\g++.exe  @CMakeFiles/main_cmake.dir/includes_CXX.rsp  -Wall -g -std=c++14 -g -o CMakeFiles\\main_cmake.dir\\src\\Gun.cpp.obj -c E:\\Github\\cmake_learning\\SoldierAssault\\src\\Gun.cpp",
+  "file": "E:/Github/cmake_learning/SoldierAssault/src/Gun.cpp"
+},
+{
+  "directory": "E:/Github/cmake_learning/SoldierAssault/build",
+  "command": "E:\\App\\MinGW\\bin\\g++.exe  @CMakeFiles/main_cmake.dir/includes_CXX.rsp  -Wall -g -std=c++14 -g -o CMakeFiles\\main_cmake.dir\\src\\Solider.cpp.obj -c E:\\Github\\cmake_learning\\SoldierAssault\\src\\Solider.cpp",
+  "file": "E:/Github/cmake_learning/SoldierAssault/src/Solider.cpp"
+}
+]

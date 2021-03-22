@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\Workspace\Git\cpp_learning\CMake\PROJ\HELLO\helloWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Workspace\Git\cpp_learning\CMake\PROJ\HELLO\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{E468F405-3738-390E-8CDF-FABD7FD9FD6B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

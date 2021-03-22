@@ -1,0 +1,7 @@
+[
+{
+  "directory": "E:/Github/cmake_learning/HELLO/build",
+  "command": "E:\\App\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\helloWorld_cmake.dir\\helloWorld.cpp.obj -c E:\\Github\\cmake_learning\\HELLO\\helloWorld.cpp",
+  "file": "E:/Github/cmake_learning/HELLO/helloWorld.cpp"
+}
+]
