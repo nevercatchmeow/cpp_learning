@@ -1,15 +1,4 @@
-环境：
-
-```bash
-# Ubuntu
-sudo apt install cmake
-# Windows
-https://github.com/Kitware/CMake/releases/download/v3.20.0-rc1/cmake-3.20.0-rc1-windows-x86_64.msi
-```
-
-
-
-## 语法特性：
+## 01 语法特性：
 
 基本语法格式：指令(参数1 参数2...)
 
@@ -25,7 +14,7 @@ https://github.com/Kitware/CMake/releases/download/v3.20.0-rc1/cmake-3.20.0-rc1-
 
 - 变量使用${}方式取值，但在IF语句中直接使用变量名。
 
-## 重要指令：
+## 02 重要指令：
 
 - cmake_minimum_required - 指定CMake的最小版本要求
 
@@ -128,7 +117,7 @@ https://github.com/Kitware/CMake/releases/download/v3.20.0-rc1/cmake-3.20.0-rc1-
   add_executable(main_hello ${CURSRC})
   ```
 
-## 常用变量：
+## 03 常用变量：
 
 - CMAKE_C_FLAGS - gcc编译选项
 
@@ -162,7 +151,7 @@ https://github.com/Kitware/CMake/releases/download/v3.20.0-rc1/cmake-3.20.0-rc1-
 - EXECUTABLE_OUTPUT_PATH：可执行文件输出的存放路径。
 - LIBRARY_OUTPUT_PATH：库文件输出的存放路径。
 
-## 编译工程：
+## 04 编译工程：
 
 CMake目录结构：项目主目录存在一个CMakeLists.txt文件。
 
@@ -207,9 +196,21 @@ cmake ..
 make
 ```
 
+### CMakeLists.txt模板
 
+```cmake
+# 项目名称（CPP）
+project(CPP)
+# 源文件目录（src目录 和 项目根目录）
+aux_source_directory(src SRC_SUB)
+aux_source_directory(. SRC_CUR)
+# 指定所需源文件目录以生成可执行文件main_cmake
+add_executable(main_cmake ${SRC_CUR})
+# 头文件目录（如果有多个使用空格分隔）
+include_directories(include)
+```
 
-## 项目实践：
+## 05 项目实践：
 
 #### HELLO项目
 
