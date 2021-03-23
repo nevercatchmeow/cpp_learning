@@ -1,0 +1,9 @@
+﻿  Circle.cpp
+  Main.cpp
+  Rect.cpp
+  Shape.cpp
+  正在生成代码
+  已完成代码的生成
+  Previous IPDB not found, fall back to full compilation.
+  All 23 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  05_虚函数.vcxproj -> E:\Workspace\Git\Cpp_Learning\C++\02_Class\PROJ\CLASS\x64\Release\05_虚函数.exe

@@ -1,0 +1,4 @@
+﻿  Main.cpp
+E:\Workspace\Git\Cpp_Learning\C++\02_Class\PROJ\01_前置声明\src\Main.cpp(8,4): warning C4101: “a”: 未引用的局部变量
+E:\Workspace\Git\Cpp_Learning\C++\02_Class\PROJ\01_前置声明\src\Main.cpp(9,4): warning C4101: “b”: 未引用的局部变量
+  01_前置声明.vcxproj -> E:\Workspace\Git\Cpp_Learning\C++\02_Class\PROJ\CLASS\Debug\01_前置声明.exe

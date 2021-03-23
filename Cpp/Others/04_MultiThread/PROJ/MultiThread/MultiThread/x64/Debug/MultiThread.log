@@ -1,0 +1,7 @@
+﻿  MultiThread.cpp
+E:\Workspace\Git\Cpp_Learning\C++\04_MultiThread\PROJ\MultiThread\MultiThread\ConditionVariable.h(51,41): warning C4267: “参数”: 从“size_t”转换到“const _Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+  MultiThread.vcxproj -> E:\Workspace\Git\Cpp_Learning\C++\04_MultiThread\PROJ\MultiThread\x64\Debug\MultiThread.exe

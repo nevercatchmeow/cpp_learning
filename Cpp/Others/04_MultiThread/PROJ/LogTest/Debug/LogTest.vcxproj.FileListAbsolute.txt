@@ -1,0 +1,2 @@
+E:\Workspace\Git\Cpp_Learning\C++\04_MultiThread\PROJ\LogTest\Debug\LogTest.exe
+E:\Workspace\Git\Cpp_Learning\C++\04_MultiThread\PROJ\LogTest\Debug\LogTest.pdb
