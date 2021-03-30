@@ -34,7 +34,7 @@ void cpp_11()
 	uint_t b = 15;
 
 	func_ptr f = mytest;
-	mytest(a, "hello_");
+	f(a, "hello_");
 }
 
 int main()
