@@ -1355,5 +1355,154 @@ SELECT teacher, id FROM class UNION ALL SELECT `name`, class_id FROM student;
 
 ### 6.2.4 子查询
 
-所谓子查询，是指在一个查询中嵌套了其他的若干查询，即在一个SELECT查询语句的WHERE或FROM子句中包含另一个SELECT查询语句。在查询语句中，外层SELECT查询语句称为主查询，WHERE子句中的SELECT查询语句被称为子查询，也被称为嵌套查询。理论上，子查询可以出现在查询语句的任意位置，但是在实际开发中子查询经常出现在WHERE和FROM子句中。
+> 子查询，是指在一个查询中嵌套了其他的若干查询，即在一个SELECT查询语句的WHERE或FROM子句中包含另一个SELECT查询语句。在查询语句中，外层SELECT查询语句称为主查询，WHERE子句中的SELECT查询语句被称为子查询，也被称为嵌套查询。通过子查询可以实现多表查询，该查询语句中可能包含IN、ANY、ALL和EXISTS等关键字，除此之外还可能包含比较运算符。理论上，子查询可以出现在查询语句的任意位置，但是在实际开发中子查询经常出现在WHERE和FROM子句中。
+
+***带比较运算符的子查询：比较运算符包括=、!=、>、>=、<、<=和<>等。其中，<>与!=等价。***
+
+```mysql
+# 查询“小花”所在班级班主任的姓名 
+SELECT teacher FROM class WHERE id = (SELECT class_id FROM student WHERE `name`='小花'); 
+```
+
+***带关键字IN的子查询：一个查询语句的条件可能落在另一个SELECT语句的查询结果中，可使用IN关键字。***
+
+```mysql
+# 查询student 表中“小花”所在班级班主任的名字
+SELECT teacher FROM class WHERE id IN (SELECT class_id FROM student WHERE `name`='小花');    
+# 查询姓名以“小”字开头的学生所在班级班主任的姓名  
+SELECT teacher FROM class WHERE id IN (SELECT class_id FROM student WHERE `name` LIKE '小%'); 
+```
+
+***带关键字EXISTS的子查询：对子查询进行判断是否返回行，如是则进行外层查询，否则外层语句不进行查询。***
+
+```mysql
+# 如果102班存在学生记录，就查询102班的班级信息 
+SELECT * FROM class WHERE id = 102 AND EXISTS (SELECT * FROM student WHERE class_id = 102); 
+```
+
+***带关键字ANY的子查询：只要满足内层查询语句返回的结果中的任何一个就可以通过该条件来执行外层查询语句。***
+
+```mysql
+# 使用简单查询中的测试数据
+CREATE TABLE scholarship (score INT, `level` VARCHAR(64));      
+INSERT INTO scholarship VALUES(240, '二等奖'),(257,'一等奖');
+# 查询能获得奖学金的学院记录 
+SELECT grade.id, grade.name, grade.math + grade.chinese + grade.english TOTAL FROM grade WHERE (math + chinese + english) >= ANY (SELECT score FROM scholarship); 
+```
+
+***带关键字ALL的子查询：只有满足内层查询语句返回的所有结果才可以执行外层查询语句。***
+
+```mysql
+# 查询能获得一等奖学金的同学记录
+SELECT grade.id, grade.`name`, grade.math + grade.chinese + grade.english TOTAL FROM grade WHERE (math + chinese + english) >= ALL (SELECT score FROM scholarship);
+# 查询不能获得奖学金的同学记录
+SELECT grade.id, grade.`name`, grade.math + grade.chinese + grade.english TOTAL FROM grade WHERE (math + chinese + english) < ALL (SELECT score FROM scholarship);
+```
+
+# 七、视图操作
+
+视图是从一个或多个表中导出来的表，是一种虚拟表，在物理上并不存在。视图就像一个窗口，通过这个窗口可以看到系统专门提供的数据，这样用户可以不看整个数据库表中的数据，而只关心对自己有用的数据。视图可以使用户的操作更方便，而且可以保障数据库系统的安全性。
+
+## 7.1 创建视图
+
+创建视图需要登录用户有相应的权限，查看权限方法：
+
+```mysql
+USE school;  
+# 查询数据库用户创建和选择视图权限 
+SELECT user, Select_priv, Create_view_priv FROM mysql.user;
+```
+
+在表上创建视图：
+
+```mysql
+# 增加私隐列
+ALTER TABLE student ADD privacy VARCHAR(64);
+# 查询数据库用户创建和选择视图权限
+# 为学生表创建视图 
+CREATE VIEW view_student AS SELECT id, class_id, `name` FROM student ;
+#查看视图 
+DESC view_student;
+#根据视图进行查询  
+SELECT * FROM view_student; 
+```
+
+# 八、触发器
+
+# 九、存储过程和函数
+
+# 十、存储引擎
+
+# 十一、C/C++访问MySQL
+
+- 步骤一：打开MySQL安装目录，确保lib目录和include目录存在。
+
+- 步骤二：VS下新建C++工程（控制台应用），解决方案平台选择x64。
+
+- 步骤三：为工程配置MySQL头文件和库文件。
+
+  - 工程属性页配置头文件和库文件目录。
+
+    ```
+    VC++目录 => 包含目录 => E:\App\MySQL\MySQL Server 8.0\include
+    VC++目录 => 库目录 => E:\App\MySQL\MySQL Server 8.0\lib
+    链接器 => 输入 => 附加依赖项 => libmysql.lib
+    ```
+
+- 步骤四：复制动态链接库到系统目录。
+
+  - 复制mysql安装目录下的```lib\libmysql.dll```复制到```c:\windows\system32```。
+
+- 步骤五：使用数据库。
+
+  ```c++
+  #include <iostream>
+  #include <mysql.h>
+  
+  int main(void)
+  {
+  	MYSQL mysql;    //数据库句柄
+  	MYSQL_RES* res; //查询结果集
+  	MYSQL_ROW row;  //记录结构体
+  
+  	//初始化数据库
+  	mysql_init(&mysql);
+  
+  	//设置字符编码
+  	mysql_options(&mysql, MYSQL_SET_CHARSET_NAME, "gbk");
+  
+  	//连接数据库
+  	if (mysql_real_connect(&mysql, "127.0.0.1", "root", "lc714462439", "school", 3306, NULL, 0) == NULL) 
+  	{
+  		printf("错误原因： %s\n", mysql_error(&mysql));
+  		printf("连接失败！\n");
+  		exit(-1);
+  	}
+  
+  	//查询数据
+  	int ret = mysql_query(&mysql, "select * from student;");
+  	printf("ret: %d\n", ret);
+  	//获取结果集
+  	res = mysql_store_result(&mysql);
+  
+  	//给ROW赋值，判断ROW是否为空，不为空就打印数据。
+  	while (row = mysql_fetch_row(res))
+  	{
+  		printf("%s  ", row[0]);  //打印ID
+  		printf("%s  ", row[1]);  //打印姓名
+  		printf("%s  ", row[2]);  //打印班级
+  		printf("%s  \n", row[3]);//打印性别
+  	}
+  	//释放结果集
+  	mysql_free_result(res);
+  
+  	//关闭数据库
+  	mysql_close(&mysql);
+  
+  	system("pause");
+  	return 0;
+  }
+  ```
+
+# 十二、数据库设计实战
 
