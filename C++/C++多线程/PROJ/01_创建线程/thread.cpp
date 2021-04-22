@@ -1,8 +1,8 @@
 /*
-    文件：thread1.cpp
+    文件：thread.cpp
     功能：创建线程，并观察线程的并发执行与阻塞等待
 
-    编译：g++ -Wall -g -std=c++11 -pthread thread1.cpp -o thread1		
+    编译：g++ -Wall -g -std=c++11 -pthread thread.cpp -o thread		
 */
   
 #include <iostream>
@@ -80,8 +80,10 @@ int main()
         std::cout << "Main thread " << this_id << " running: " << i+1 << std::endl;
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
+    
 #ifdef WIN32
     system("pause");
 #endif
+    
     return 0;
 }
